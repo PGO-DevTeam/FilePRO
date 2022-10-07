@@ -10,7 +10,7 @@ namespace FilePro.Controllers.Master
     {
         private readonly AppDbContext _context;
         private readonly UserManager<Users> _userManager;
-        public  VendorController(AppDbContext context, UserManager<Users> userManager)
+        public VendorController(AppDbContext context, UserManager<Users> userManager)
         {
             _userManager = userManager;
             _context = context;
@@ -74,7 +74,7 @@ namespace FilePro.Controllers.Master
                 }
                 else
                 {
-                    var data = _context.Projects.Include(x => x.PIC2).Include(x => x.PIC1).Where(x => x.Id == project.Id).FirstOrDefault();
+                    var data = _context.Projects.Include(x => x.PIC2).Include(x => x.PIC1).Where(x => x.Id == vendor.Id).FirstOrDefault();
                     data.Nama = vendor.NamaVendor;
                     _context.Entry(data).State = EntityState.Modified;
                     _context.SaveChanges();
